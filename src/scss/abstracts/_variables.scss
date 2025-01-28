@@ -1,6 +1,10 @@
 :root {
   --white-1: rgb(255, 255, 255);
+  --white-2: rgb(247, 247, 243);
   --black-1: rgb(0, 0, 0);
+  --green-1: rgb(104, 115, 92);
+  --green-1-50: rgb(104, 115, 92, 0.5);
+  --grey-1: rgb(204, 204, 204);
 
   --g-page-bg-color: var(--white-1);
   --g-page-text-color: var(--black-1);
@@ -16,8 +20,15 @@
 
 :root {
   --g-page-min-width: 320px;
-  --g-container-max-width: 1320px;
-  --g-default-padding: 20px;
+
+  --g-wrapper-max-width: 1320px;
+
+  --g-xlg-gap: 1.875rem;
+  --g-lg-gap: 1.5625rem;
+  --g-md-gap: 1.25rem;
+  --g-sm-gap: 0.9375rem;
+  --g-xs-gap: 0.625rem;
+  --g-xxs-gap: 0.3125rem;
 }
 
 $breakpoint-sm: 575.98px;
