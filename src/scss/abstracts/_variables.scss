@@ -1,10 +1,11 @@
 :root {
   --white-1: rgb(255, 255, 255);
+  --white-1-50: rgba(255, 255, 255, 0.5);
   --white-2: rgb(247, 247, 243);
   --black-1: rgb(0, 0, 0);
   --green-1: rgb(104, 115, 92);
   --green-1-50: rgb(104, 115, 92, 0.5);
-  --grey-1: rgb(204, 204, 204);
+  --gray-1: rgb(204, 204, 204);
 
   --g-page-bg-color: var(--white-1);
   --g-page-text-color: var(--black-1);

@@ -1,13 +1,14 @@
 import { FC } from 'react';
-import { WRAPPER } from '../../../constants/classNames';
+import HomeHero from '../HomeHero/HomeHero';
+import './Home.scss';
 
 export const HOME = 'home';
 
 const Home: FC = () => {
   return (
-    <div className={HOME}>
-      <div className={WRAPPER}>Home page</div>
-    </div>
+    <main className={HOME}>
+      <HomeHero />
+    </main>
   );
 };
 

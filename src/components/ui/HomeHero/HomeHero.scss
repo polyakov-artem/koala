@@ -1,0 +1,33 @@
+.home-hero {
+  color: var(--white-1);
+
+  &__wrapper {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    min-height: clamp(0px, 100vh, 600px);
+    padding-bottom: var(--g-md-gap);
+    padding-top: var(--g-md-gap);
+    position: relative;
+  }
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  &__block-title {
+    margin-bottom: 1rem;
+  }
+
+  &__block-text {
+    margin-bottom: 2rem;
+  }
+
+  &__block-button {
+    align-self: center;
+    max-width: 200px;
+    width: 100%;
+  }
+}
