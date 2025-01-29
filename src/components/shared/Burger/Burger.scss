@@ -1,0 +1,69 @@
+.burger {
+  --bg-color: transparent;
+  --border-color: var(--grey-1);
+  --part-color: var(--green-1);
+}
+
+$part-width: 25px;
+$part-height: 3px;
+$part-gutter: 5px;
+$part-border-radius: 0;
+$transition-duration: 0.2s;
+
+.burger {
+  display: inline-block;
+  padding: 0.7rem;
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+}
+
+.burger-icon {
+  position: relative;
+  margin-top: $part-height + $part-gutter;
+  margin-bottom: $part-height + $part-gutter;
+  user-select: none;
+
+  &,
+  &::before,
+  &::after {
+    display: block;
+    width: $part-width;
+    height: $part-height;
+    background-color: var(--part-color);
+    border-radius: $part-border-radius;
+    transition-property: background-color, transform;
+    transition-duration: $transition-duration;
+  }
+
+  &::before,
+  &::after {
+    position: absolute;
+    content: '';
+  }
+
+  &::before {
+    top: -($part-height + $part-gutter);
+  }
+
+  &::after {
+    top: $part-height + $part-gutter;
+  }
+}
+
+.burger_active .burger-icon {
+  background-color: transparent;
+
+  &::before,
+  &::after {
+    background-color: var(--part-color);
+  }
+
+  &::before {
+    transform: translateY($part-gutter + $part-height) rotate(45deg);
+  }
+
+  &::after {
+    transform: translateY(-($part-gutter + $part-height)) rotate(-45deg);
+  }
+}
