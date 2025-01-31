@@ -1,5 +1,5 @@
 import { ComponentProps, FC, useMemo } from 'react';
-import { categories } from '../../../routes';
+import { productCategories } from '../../../routes';
 import { NavLink } from 'react-router';
 import { kebabToString } from '../../../../tests/utils/kebabToString';
 import classNames from 'classnames';
@@ -28,7 +28,7 @@ const HeaderLinks: FC<THeaderLinksProps> = (props) => {
 
   const links = useMemo(
     () =>
-      categories.map((category) => (
+      productCategories.map((category) => (
         <li className={HEADER_LINKS_ITEM} key={category}>
           <NavLink to={category} className={linkClassNameHandler}>
             <span className={HEADER_LINKS_TEXT}>{kebabToString(category)}</span>

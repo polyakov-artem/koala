@@ -4,7 +4,11 @@ import NotFound from './components/ui/NotFound/NotFound';
 import { PUBLIC_PATH } from './constants/constants';
 import { RouteObject } from 'react-router';
 
-export const categories = ['mattresses', 'sofa-beds', 'sofas'];
+export const MATTRESSES = 'mattresses';
+export const SOFA_BEDS = 'sofa-beds';
+export const SOFAS = 'sofas';
+
+export const productCategories = [MATTRESSES, SOFA_BEDS, SOFAS];
 
 const routes: RouteObject[] = [
   {
@@ -15,7 +19,7 @@ const routes: RouteObject[] = [
         index: true,
         element: <Home />,
       },
-      ...categories.map((category) => ({
+      ...productCategories.map((category) => ({
         path: category,
         element: <Home />,
       })),
