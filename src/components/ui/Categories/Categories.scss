@@ -1,0 +1,28 @@
+.categories__card {
+  --title-hover-color: var(--green-1);
+}
+
+.categories {
+  padding: 2rem 0;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 300px);
+    gap: var(--g-md-gap);
+    justify-content: center;
+  }
+
+  &__link {
+    text-decoration: none;
+    transition: 0.2s translate;
+
+    &:active {
+      translate: 0 3px;
+    }
+  }
+
+  &__title {
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+}
