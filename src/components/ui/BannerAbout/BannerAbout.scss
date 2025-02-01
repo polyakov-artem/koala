@@ -1,0 +1,29 @@
+.banner-about {
+  padding: var(--g-md-gap);
+  border-radius: 10px;
+  background: url(../../../assets/images/bannerAbout/forest.webp) no-repeat center / cover;
+  color: var(--white-1);
+  display: flex;
+  gap: var(--g-md-gap);
+
+  &__title {
+    margin-right: auto;
+    flex-basis: 300px;
+  }
+
+  &__text {
+    flex-basis: 700px;
+  }
+
+  @media (max-width: 767.98px) {
+    flex-wrap: wrap;
+
+    &__title {
+      flex-basis: auto;
+    }
+
+    &__text {
+      flex-basis: auto;
+    }
+  }
+}

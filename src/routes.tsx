@@ -7,6 +7,7 @@ import { RouteObject } from 'react-router';
 export const MATTRESSES = 'mattresses';
 export const SOFA_BEDS = 'sofa-beds';
 export const SOFAS = 'sofas';
+export const WHY_COALA = 'why-coala';
 
 export const productCategories = [MATTRESSES, SOFA_BEDS, SOFAS];
 
@@ -23,6 +24,10 @@ const routes: RouteObject[] = [
         path: category,
         element: <Home />,
       })),
+      {
+        path: WHY_COALA,
+        element: <Home />,
+      },
       {
         path: `*`,
         element: <NotFound />,
