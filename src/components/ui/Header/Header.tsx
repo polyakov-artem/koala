@@ -2,13 +2,13 @@ import { FC, useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router';
 import { PUBLIC_PATH } from '../../../constants/constants';
 import HeaderLinks from '../HeaderLinks/HeaderLinks';
-import SvgIcon from '../../shared/SvgIcon/SvgIcon';
 import { FaRegUserCircle, FaShoppingCart } from 'react-icons/fa';
-import { ICON_MD, LOGO_ICON, WRAPPER } from '../../../constants/classNames';
+import { ICON_MD, WRAPPER } from '../../../constants/classNames';
 import classNames from 'classnames';
 import Burger from '../../shared/Burger/Burger';
 import { Dropdown, Collapse } from 'react-bootstrap';
 import './Header.scss';
+import LogoLink from '../LogoLink/LogoLink';
 
 export const HEADER = 'header';
 export const HEADER_NAV = `${HEADER}__nav`;
@@ -50,9 +50,7 @@ const Header: FC = () => {
   return (
     <header className={HEADER}>
       <nav className={classNames(WRAPPER, HEADER_NAV)}>
-        <Link className={HEADER_LOGO} to={PUBLIC_PATH}>
-          <SvgIcon className={LOGO_ICON} iconId="logo" />
-        </Link>
+        <LogoLink className={HEADER_LOGO} />
         <Collapse in={isMenuOpen}>
           <div className={HEADER_MENU_WRAP}>
             <HeaderLinks />
