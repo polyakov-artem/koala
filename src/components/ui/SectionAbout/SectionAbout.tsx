@@ -4,7 +4,7 @@ import CardConsiderate from '../CardConsiderate/CardConsiderate';
 import { cardsData, bannerData } from './data';
 import BannerAbout from '../BannerAbout/BannerAbout';
 import Button from '../../shared/Button/Button';
-import { getFullPath } from '../../../../tests/utils/getFullPath';
+import { getFullPath } from '../../../utils/getFullPath';
 import { WHY_COALA } from '../../../routes';
 import './SectionAbout.scss';
 

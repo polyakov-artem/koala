@@ -1,13 +1,13 @@
 import { ComponentProps, FC, useMemo } from 'react';
 import { Link } from 'react-router';
-import { getFullPath } from '../../../../tests/utils/getFullPath';
+import { getFullPath } from '../../../utils/getFullPath';
 import { MATTRESSES, productCategories, SOFA_BEDS, SOFAS } from '../../../routes';
 import mattressSrc from './../../../assets/images/categories/mattress.webp';
 import sofaBedSrc from './../../../assets/images/categories/sofaBed.webp';
 import Card from '../Card/Card';
 import sofaSrc from './../../../assets/images/categories/sofa.webp';
 import { WRAPPER } from '../../../constants/classNames';
-import { kebabToString } from '../../../../tests/utils/kebabToString';
+import { kebabToString } from '../../../utils/kebabToString';
 import './Categories.scss';
 
 export type TCategoriesProps = ComponentProps<'section'>;

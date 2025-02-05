@@ -1,7 +1,7 @@
 import { ComponentProps, FC, useMemo } from 'react';
 import { productCategories } from '../../../routes';
 import { NavLink } from 'react-router';
-import { kebabToString } from '../../../../tests/utils/kebabToString';
+import { kebabToString } from '../../../utils/kebabToString';
 import classNames from 'classnames';
 import './HeaderLinks.scss';
 

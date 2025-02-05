@@ -1,5 +1,5 @@
 import { ComponentProps, FC, useMemo } from 'react';
-import { getClasses } from '../../../../tests/utils/getClasses';
+import { getClasses } from '../../../utils/getClasses';
 import { Link, LinkProps } from 'react-router';
 import './button.scss';
 

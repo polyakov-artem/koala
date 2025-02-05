@@ -1,6 +1,6 @@
 import './Burger.scss';
 import { ComponentProps, FC } from 'react';
-import { getClasses } from '../../../../tests/utils/getClasses';
+import { getClasses } from '../../../utils/getClasses';
 
 export type TBurgerProps = {
   active?: boolean;

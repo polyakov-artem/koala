@@ -1,4 +1,4 @@
-import { getClasses } from '../../../../tests/utils/getClasses';
+import { getClasses } from '../../../utils/getClasses';
 import { ComponentProps, FC } from 'react';
 import './BannerAbout.scss';
 
