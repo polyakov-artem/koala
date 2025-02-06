@@ -44,7 +44,7 @@ const HomeHero: FC<THomeHeroProps> = (props) => {
           <p className={HOME_HERO_BLOCK_TEXT}>
             Koala Polar+ Mattress. Keep your cool all year long.
           </p>
-          <Button className={HOME_HERO_BLOCK_BUTTON} view="primary" theme="primary">
+          <Button el="button" className={HOME_HERO_BLOCK_BUTTON} view="primary" theme="primary">
             SHOP NOW
           </Button>
         </div>

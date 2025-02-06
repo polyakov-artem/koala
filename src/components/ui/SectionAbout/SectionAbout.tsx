@@ -29,7 +29,7 @@ const SectionAbout: FC<TSectionAboutProps> = () => {
           <h2 className={SECTION_ABOUT_TITLE}>A little about us</h2>
           <Button
             to={getFullPath(WHY_COALA)}
-            capital
+            uppercase
             relative="path"
             el="link"
             theme="primary"

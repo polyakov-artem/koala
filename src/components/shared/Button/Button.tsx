@@ -10,15 +10,20 @@ export const BTN_THEME_PRIMARY = `${BTN}_theme_primary`;
 export const BTN_FULL_WIDTH = `${BTN}_full-width`;
 
 export type TButtonCustomProps = {
-  theme?: 'primary';
+  theme?: 'primary' | 'secondary' | 'tertiary';
   view?: 'primary';
   fullWidth?: boolean;
-  capital?: boolean;
+  capitalized?: boolean;
+  uppercase?: boolean;
+  selected?: boolean;
+  bold?: boolean;
+  disabled?: boolean;
 };
 
 export type TButtonProps = (
-  | (ComponentProps<'button'> & { el?: 'button' })
-  | (LinkProps & { el?: 'link' })
+  | (ComponentProps<'button'> & { el: 'button' })
+  | (LinkProps & { el: 'link' })
+  | (ComponentProps<'a'> & { el: 'a' })
 ) &
   TButtonCustomProps;
 
@@ -29,11 +34,23 @@ const Button: FC<TButtonProps> = (props) => {
     theme,
     view,
     fullWidth,
-    capital,
+    capitalized,
+    uppercase,
+    selected,
+    bold,
     el = 'button',
     ...restProps
   } = props;
-  const classes = getClasses(BTN, className, { theme, view, fullWidth, capital });
+  const classes = getClasses(BTN, className, {
+    theme,
+    view,
+    fullWidth,
+    capitalized,
+    uppercase,
+    bold,
+    selected,
+    disabled: props.disabled,
+  });
 
   const inner = useMemo(
     () => (
@@ -52,6 +69,10 @@ const Button: FC<TButtonProps> = (props) => {
 
   if (el === 'link') {
     return <Link {...(elProps as LinkProps)} />;
+  }
+
+  if (el === 'a') {
+    return <a {...(elProps as ComponentProps<'a'>)} />;
   }
 };
 
