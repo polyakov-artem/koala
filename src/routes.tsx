@@ -8,6 +8,7 @@ export const MATTRESSES = 'mattresses';
 export const SOFA_BEDS = 'sofa-beds';
 export const SOFAS = 'sofas';
 export const WHY_COALA = 'why-coala';
+export const NOT_FOUND = 'not-found';
 
 export const productCategories = [MATTRESSES, SOFA_BEDS, SOFAS];
 
@@ -33,7 +34,7 @@ const routes: RouteObject[] = [
         element: <NotFound />,
       },
       {
-        path: `not-found`,
+        path: NOT_FOUND,
         element: <NotFound />,
       },
     ],
