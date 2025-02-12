@@ -12,6 +12,8 @@ import { WRAPPER } from '../../../constants/classNames';
 import LoaderBlock from '../../shared/LoaderBlock/LoaderBlock';
 import { useSearchParams } from 'react-router';
 import { decode, encode } from 'ent';
+import SizeTabs from '../../shared/SizeTabs/SizeTabs';
+import ProductTab from '../ProductTab/ProductTab';
 import './SectionTabs.scss';
 
 export type TSectionTabsProps = ComponentProps<'section'>;
@@ -113,6 +115,18 @@ const SectionTabs: FC<TSectionTabsProps> = (props) => {
       <div className={WRAPPER}>
         <p className={SECTION_TABS_PRE_TITLE}>★★★★★ 500,000+ happy customers</p>
         <h1 className={SECTION_TABS_TITLE}>{`Australia's most awarded mattress brand`}</h1>
+        <SizeTabs
+          className={SECTION_TABS_TABS}
+          sizes={sizesByCategoryQuery.data}
+          currentSizeName={currentSizeName}
+        />
+        <ProductTab
+          sizes={sizesByCategoryQuery.data}
+          products={productsByCategoryQuery.data}
+          details={detailsByCategoryQuery.data}
+          appearances={appearancesByCategoryQuery.data}
+          currentSizeName={currentSizeName}
+        />
       </div>
     </section>
   );

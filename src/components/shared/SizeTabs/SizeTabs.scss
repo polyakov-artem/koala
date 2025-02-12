@@ -1,0 +1,14 @@
+.size-tabs {
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min-content, 200px));
+    gap: var(--g-md-gap);
+    justify-content: center;
+  }
+
+  &__link {
+    text-decoration: none;
+    padding: var(--g-xs-gap);
+    text-align: center;
+  }
+}
