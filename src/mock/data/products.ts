@@ -1,0 +1,68 @@
+import { TProduct } from '../../types/types';
+
+export default [
+  {
+    _id: '1',
+    price: 1050,
+    category: 'mattresses',
+    detailsId: '1',
+    sizeId: '1',
+    appearanceId: '1',
+  },
+  {
+    _id: '2',
+    price: 1990,
+    category: 'mattresses',
+    detailsId: '1',
+    sizeId: '2',
+    appearanceId: '2',
+  },
+  {
+    _id: '3',
+    price: 2290,
+    category: 'mattresses',
+    detailsId: '1',
+    sizeId: '3',
+    appearanceId: '3',
+  },
+  {
+    _id: '4',
+    price: 2390,
+    category: 'mattresses',
+    detailsId: '2',
+    sizeId: '4',
+    appearanceId: '4',
+  },
+  {
+    _id: '5',
+    price: 2790,
+    category: 'mattresses',
+    detailsId: '2',
+    sizeId: '5',
+    appearanceId: '5',
+  },
+  {
+    _id: '6',
+    price: 890,
+    category: 'mattresses',
+    detailsId: '3',
+    sizeId: '6',
+    appearanceId: '6',
+  },
+  {
+    _id: '7',
+    price: 1490,
+    category: 'mattresses',
+    detailsId: '3',
+    sizeId: '7',
+    appearanceId: '7',
+  },
+  {
+    _id: '8',
+    price: 1650,
+    category: 'mattresses',
+    detailsId: '3',
+    sizeId: '8',
+    appearanceId: '8',
+  },
+] satisfies Array<TProduct>;
