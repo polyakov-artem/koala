@@ -1,5 +1,6 @@
 import App from './App';
 import Home from './components/ui/Home/Home';
+import Mattresses from './components/ui/Mattresses/Mattresses';
 import NotFound from './components/ui/NotFound/NotFound';
 import { PUBLIC_PATH } from './constants/constants';
 import { RouteObject } from 'react-router';
@@ -21,10 +22,10 @@ const routes: RouteObject[] = [
         index: true,
         element: <Home />,
       },
-      ...productCategories.map((category) => ({
-        path: category,
-        element: <Home />,
-      })),
+      {
+        path: MATTRESSES,
+        element: <Mattresses />,
+      },
       {
         path: WHY_COALA,
         element: <Home />,
