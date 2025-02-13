@@ -6,9 +6,10 @@ import mattressSrc from './../../../assets/images/categories/mattress.webp';
 import sofaBedSrc from './../../../assets/images/categories/sofaBed.webp';
 import Card from '../Card/Card';
 import sofaSrc from './../../../assets/images/categories/sofa.webp';
-import { WRAPPER } from '../../../constants/classNames';
+import { SECTION, WRAPPER } from '../../../constants/classNames';
 import { kebabToString } from '../../../utils/kebabToString';
 import './Categories.scss';
+import classNames from 'classnames';
 
 export type TCategoriesProps = ComponentProps<'section'>;
 
@@ -18,7 +19,10 @@ export const CATEGORIES_LINK = `${CATEGORIES}__link`;
 export const CATEGORIES_TITLE = `${CATEGORIES}__title`;
 export const CATEGORIES_CARD = `${CATEGORIES}__card`;
 
-const Categories: FC<TCategoriesProps> = () => {
+const Categories: FC<TCategoriesProps> = (props) => {
+  const { className, ...restProps } = props;
+  const classes = classNames(CATEGORIES, SECTION, className);
+
   const imgSources: Record<string, string> = {
     [MATTRESSES]: mattressSrc,
     [SOFA_BEDS]: sofaBedSrc,
@@ -46,7 +50,7 @@ const Categories: FC<TCategoriesProps> = () => {
   );
 
   return (
-    <section className={CATEGORIES}>
+    <section className={classes} {...restProps}>
       <div className={WRAPPER}>
         <h2 className={CATEGORIES_TITLE}>Categories</h2>
         <div className={CATEGORIES_GRID}>{links}</div>

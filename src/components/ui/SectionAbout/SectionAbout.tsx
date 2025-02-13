@@ -1,11 +1,12 @@
 import { ComponentProps, FC, useMemo } from 'react';
-import { WRAPPER } from '../../../constants/classNames';
+import { SECTION, WRAPPER } from '../../../constants/classNames';
 import CardConsiderate from '../CardConsiderate/CardConsiderate';
 import { cardsData, bannerData } from './data';
 import BannerAbout from '../BannerAbout/BannerAbout';
 import Button from '../../shared/Button/Button';
 import { getFullPath } from '../../../utils/getFullPath';
 import { WHY_COALA } from '../../../routes';
+import classNames from 'classnames';
 import './SectionAbout.scss';
 
 export type TSectionAboutProps = ComponentProps<'section'>;
@@ -16,14 +17,17 @@ export const SECTION_ABOUT_TITLE = `${SECTION_ABOUT}__title`;
 export const SECTION_ABOUT_BANNER = `${SECTION_ABOUT}__banner`;
 export const SECTION_ABOUT_HEADER = `${SECTION_ABOUT}__header`;
 
-const SectionAbout: FC<TSectionAboutProps> = () => {
+const SectionAbout: FC<TSectionAboutProps> = (props) => {
+  const { className, ...restProps } = props;
+  const classes = classNames(SECTION_ABOUT, SECTION, className);
+
   const cards = useMemo(
     () => cardsData.map((data) => <CardConsiderate key={data.title} {...data} />),
     []
   );
 
   return (
-    <section className={SECTION_ABOUT}>
+    <section className={classes} {...restProps}>
       <div className={WRAPPER}>
         <div className={SECTION_ABOUT_HEADER}>
           <h2 className={SECTION_ABOUT_TITLE}>A little about us</h2>

@@ -8,7 +8,7 @@ import {
 } from '../../../store/api';
 import { getFirstPathNamePart } from '../../../utils/getFirstPathNamePart';
 import { skipToken } from '@reduxjs/toolkit/query';
-import { WRAPPER } from '../../../constants/classNames';
+import { WRAPPER, SECTION } from '../../../constants/classNames';
 import LoaderBlock from '../../shared/LoaderBlock/LoaderBlock';
 import { useSearchParams } from 'react-router';
 import { decode, encode } from 'ent';
@@ -25,7 +25,7 @@ export const SECTION_TABS_TABS = `${SECTION_TABS}__tabs`;
 
 const SectionTabs: FC<TSectionTabsProps> = (props) => {
   const { className } = props;
-  const classes = classNames(SECTION_TABS, className);
+  const classes = classNames(SECTION, SECTION_TABS, className);
   const category = getFirstPathNamePart({ hasPublicPath: true });
   const sizesByCategoryQuery = useSizesByCategoryQuery(category ?? skipToken);
   const productsByCategoryQuery = useProductsByCategoryQuery(category ?? skipToken);

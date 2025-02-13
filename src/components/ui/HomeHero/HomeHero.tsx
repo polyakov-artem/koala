@@ -1,7 +1,7 @@
 import { ComponentProps, FC, useEffect, useState } from 'react';
 import Button from '../../shared/Button/Button';
 import classNames from 'classnames';
-import { BG_OBJECT } from '../../../constants/classNames';
+import { BG_OBJECT, SECTION } from '../../../constants/classNames';
 import posterUrl from './../../../assets/images/hero-poster.png';
 import desktopVideoUrl from './../../../assets/video/hero_desktop.mp4';
 import mobileVideoUrl from './../../../assets/video/hero_mobile.mp4';
@@ -19,7 +19,7 @@ export type THomeHeroProps = ComponentProps<'section'>;
 
 const HomeHero: FC<THomeHeroProps> = (props) => {
   const { className, ...restProps } = props;
-  const classes = classNames(HOME_HERO, className);
+  const classes = classNames(HOME_HERO, SECTION, className);
   const [videoUrl, setVideUrl] = useState('');
 
   useEffect(() => {
