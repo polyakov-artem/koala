@@ -38,8 +38,6 @@ export const api = createApi({
           return product.category === category;
         });
 
-        if (!result.length) return notFoundError;
-
         return { data: result };
       },
     }),
@@ -51,8 +49,6 @@ export const api = createApi({
         const result = products.filter((product) => {
           return product.detailsId === detailsId;
         });
-
-        if (!result.length) return notFoundError;
 
         return { data: result };
       },
@@ -76,8 +72,6 @@ export const api = createApi({
 
         const result = details.filter((item) => item.category === category);
 
-        if (!result.length) return notFoundError;
-
         return { data: result };
       },
     }),
@@ -100,8 +94,6 @@ export const api = createApi({
 
         const result = sizes.filter((size) => size.detailsId === detailsId);
 
-        if (result.length === 0) return notFoundError;
-
         return { data: result };
       },
     }),
@@ -111,8 +103,6 @@ export const api = createApi({
         await delay(100);
 
         const result = sizes.filter((size) => size.category === category);
-
-        if (result.length === 0) return notFoundError;
 
         return { data: result };
       },
@@ -136,8 +126,6 @@ export const api = createApi({
 
         const result = appearances.filter((appearance) => appearance.detailsId === detailsId);
 
-        if (result.length === 0) return notFoundError;
-
         return { data: result };
       },
     }),
@@ -147,8 +135,6 @@ export const api = createApi({
         await delay(100);
 
         const result = appearances.filter((appearance) => appearance.category === category);
-
-        if (result.length === 0) return notFoundError;
 
         return { data: result };
       },
