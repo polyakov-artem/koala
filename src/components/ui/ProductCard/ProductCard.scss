@@ -1,10 +1,11 @@
 .product-card {
-  --title-hover-color: inherit;
-}
-
-.product-card {
-  padding: var(--g-xs-gap);
   border-radius: 10px;
+  padding: var(--g-xs-gap);
+
+  &__link {
+    text-decoration: none;
+    color: currentColor;
+  }
 
   &__img-wrap {
     position: relative;
@@ -28,7 +29,7 @@
 
 @media (hover: hover) {
   .product-card {
-    &_with-hover {
+    &_with-hover-effect {
       transition: 0.2s box-shadow;
 
       &:hover {

@@ -1,10 +1,8 @@
 import classNames from 'classnames';
 import { ComponentProps, FC, useMemo } from 'react';
 import { TAppearance, TDetails, TProduct, TSize } from '../../../types/types';
-import { Link } from 'react-router';
 import ProductCard from '../ProductCard/ProductCard';
 import './ProductTab.scss';
-import { getFullPath } from '../../../utils/getFullPath';
 
 export type TProductTabProps = ComponentProps<'div'> & {
   sizes: TSize[];
@@ -15,7 +13,6 @@ export type TProductTabProps = ComponentProps<'div'> & {
 
 export const PRODUCT_TAB = 'product-tab';
 export const PRODUCT_TAB_GRID = `${PRODUCT_TAB}__grid`;
-export const PRODUCT_TAB_LINK = `${PRODUCT_TAB}__link`;
 
 const ProductTab: FC<TProductTabProps> = (props) => {
   const { className, products, details, appearances, ...restProps } = props;
@@ -26,18 +23,14 @@ const ProductTab: FC<TProductTabProps> = (props) => {
       const productDetails = details.find((item) => item._id === product.detailsId);
       const productAppearance = appearances.find((item) => item._id === product.appearanceId);
       return (
-        <Link
+        <ProductCard
           key={product._id}
-          to={getFullPath(`${product.category}/${product._id}`)}
-          relative="path"
-          className={PRODUCT_TAB_LINK}>
-          <ProductCard
-            product={product}
-            details={productDetails}
-            appearance={productAppearance}
-            withHover
-          />
-        </Link>
+          product={product}
+          details={productDetails}
+          appearance={productAppearance}
+          withHoverEffect
+          isLink
+        />
       );
     });
   }, [products, details, appearances]);
