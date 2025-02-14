@@ -1,0 +1,15 @@
+.section-bestsellers {
+  &__pre-title {
+    text-align: center;
+    margin-bottom: 0;
+  }
+
+  &__title {
+    text-align: center;
+    margin-bottom: var(--g-md-gap);
+  }
+
+  &__tabs {
+    margin-bottom: var(--g-xlg-gap);
+  }
+}

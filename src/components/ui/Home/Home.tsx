@@ -5,6 +5,7 @@ import SectionWhy from '../SectionWhy/SectionWhy';
 import SectionAbout from '../SectionAbout/SectionAbout';
 import SectionSubscribe from '../SectionSubscribe/SectionSubscribe';
 import SectionBrands from '../SectionBrands/SectionBrands';
+import SectionBestsellers from '../SectionBestsellers/SectionBestsellers';
 import './Home.scss';
 
 export const HOME = 'home';
@@ -14,9 +15,10 @@ const Home: FC = () => {
     <main className={HOME}>
       <HomeHero />
       <Categories />
+      <SectionBestsellers />
+      <SectionBrands />
       <SectionWhy />
       <SectionAbout />
-      <SectionBrands />
       <SectionSubscribe />
     </main>
   );
