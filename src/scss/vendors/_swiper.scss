@@ -1,0 +1,8 @@
+.swiper {
+  &-equal-slides {
+    .swiper-slide {
+      height: auto;
+      display: flex;
+    }
+  }
+}

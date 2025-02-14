@@ -1,0 +1,32 @@
+.section-buyers {
+  &__header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    margin-bottom: var(--g-md-gap);
+  }
+
+  &__pre-title {
+    margin-bottom: 0;
+  }
+
+  &__title {
+    margin-bottom: 0;
+    max-width: 800px;
+  }
+
+  &__accented-text {
+    color: var(--green-1);
+  }
+
+  &__link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: var(--g-md-gap);
+  }
+}

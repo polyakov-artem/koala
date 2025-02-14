@@ -40,6 +40,16 @@ export type TDetails = {
   faq: TFaq;
 };
 
+export type TReview = {
+  category: string;
+  stars: string;
+  title: string;
+  text: string;
+  name: string;
+  imgURL: string;
+  productId: string;
+};
+
 export type TAdvantage = { title: string; text: string; mediaURL: string };
 export type TReason = { title: string; text: string; mediaURL: string };
 export type TFaq = { title: string; text: string }[];
