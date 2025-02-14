@@ -1,4 +1,4 @@
-import { ComponentProps, FC, useMemo } from 'react';
+import { ComponentProps, FC } from 'react';
 import { getClasses } from '../../../utils/getClasses';
 import { Link, LinkProps } from 'react-router';
 import './button.scss';
@@ -11,7 +11,7 @@ export const BTN_FULL_WIDTH = `${BTN}_full-width`;
 
 export type TButtonCustomProps = {
   theme?: 'primary' | 'secondary' | 'tertiary';
-  view?: 'primary';
+  view?: 'primary' | 'round';
   fullWidth?: boolean;
   capitalized?: boolean;
   uppercase?: boolean;
@@ -52,13 +52,10 @@ const Button: FC<TButtonProps> = (props) => {
     disabled: props.disabled,
   });
 
-  const inner = useMemo(
-    () => (
-      <span className={BTN_INNER}>
-        <span className={BTN_INNER}>{children}</span>
-      </span>
-    ),
-    [children]
+  const inner = (
+    <span className={BTN_INNER}>
+      <span className={BTN_INNER}>{children}</span>
+    </span>
   );
 
   const elProps = { className: classes, children: inner, ...restProps };
