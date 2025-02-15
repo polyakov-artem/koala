@@ -1,11 +1,10 @@
 import classNames from 'classnames';
 import { ComponentProps, FC, useMemo } from 'react';
-import { TAppearance, TDetails, TProduct, TSize } from '../../../types/types';
+import { TAppearance, TDetails, TProduct } from '../../../types/types';
 import ProductCard from '../ProductCard/ProductCard';
 import './ProductTab.scss';
 
 export type TProductTabProps = ComponentProps<'div'> & {
-  sizes: TSize[];
   products: TProduct[];
   details: TDetails[];
   appearances: TAppearance[];

@@ -1,22 +1,25 @@
 import { ComponentProps, FC, useEffect, useMemo, useState } from 'react';
 import classNames from 'classnames';
-import {
-  useAppearancesByCategoryQuery,
-  useDetailsByCategoryQuery,
-  useProductsByCategoryQuery,
-  useSizesByCategoryQuery,
-} from '../../../store/api';
-import { getFirstPathNamePart } from '../../../utils/getFirstPathNamePart';
-import { skipToken } from '@reduxjs/toolkit/query';
 import { WRAPPER, SECTION } from '../../../constants/classNames';
 import LoaderBlock from '../../shared/LoaderBlock/LoaderBlock';
 import { useSearchParams } from 'react-router';
 import { decode, encode } from 'ent';
 import ProductTab from '../ProductTab/ProductTab';
-import './SectionTabs.scss';
 import ParamTabs from '../ParamTabs/ParamTabs';
+import { TAppearance, TDetails, TProduct, TSize } from '../../../types/types';
+import './SectionTabs.scss';
 
-export type TSectionTabsProps = ComponentProps<'section'>;
+export type TSectionTabsProps = ComponentProps<'section'> & {
+  isSuccess: boolean;
+  isError: boolean;
+  isLoading: boolean;
+  querySizes?: TSize[];
+  queryProducts?: TProduct[];
+  queryDetails?: TDetails[];
+  queryAppearances?: TAppearance[];
+};
+
+export const SIZE_PARAMETER_KEY = 'size';
 
 export const SECTION_TABS = 'section-tabs';
 export const SECTION_TABS_PRE_TITLE = `${SECTION_TABS}__pre-title`;
@@ -24,82 +27,66 @@ export const SECTION_TABS_TITLE = `${SECTION_TABS}__title`;
 export const SECTION_TABS_TABS = `${SECTION_TABS}__tabs`;
 
 const SectionTabs: FC<TSectionTabsProps> = (props) => {
-  const { className } = props;
+  const {
+    className,
+    isError,
+    isLoading,
+    isSuccess,
+    querySizes,
+    queryProducts,
+    queryDetails,
+    queryAppearances,
+  } = props;
   const classes = classNames(SECTION, SECTION_TABS, className);
-  const category = getFirstPathNamePart({ hasPublicPath: true });
-  const sizesByCategoryQuery = useSizesByCategoryQuery(category ?? skipToken);
-  const productsByCategoryQuery = useProductsByCategoryQuery(category ?? skipToken);
-  const detailsByCategoryQuery = useDetailsByCategoryQuery(category ?? skipToken);
-  const appearancesByCategoryQuery = useAppearancesByCategoryQuery(category ?? skipToken);
   const [searchParams, setSearchParams] = useSearchParams();
-  const sizeParamValue = decode(searchParams.get('size') || '');
+  const sizeParamValue = decode(searchParams.get(SIZE_PARAMETER_KEY) || '');
   const [currentSizeName, setCurrentSizeName] = useState('');
 
   const sizeNames = useMemo(() => {
-    return sizesByCategoryQuery.data?.length
-      ? [...new Set(sizesByCategoryQuery.data?.map((size) => size.name))]
-      : [];
-  }, [sizesByCategoryQuery]);
+    if (!isSuccess) return;
+
+    return [...new Set(querySizes!.map((size) => size.name))];
+  }, [isSuccess, querySizes]);
 
   const products = useMemo(() => {
-    const products = productsByCategoryQuery.data;
-    const sizes = sizesByCategoryQuery.data;
+    if (!isSuccess || !currentSizeName) return;
 
-    if (!products || !sizes || !currentSizeName) {
-      return [];
-    }
-    const tabSizes = sizes.filter((size) => size.name === currentSizeName);
+    const sizesWithCurrentSizeName = querySizes!.filter((size) => size.name === currentSizeName);
 
-    return products.filter((product) => tabSizes.some((size) => product.sizeId === size._id));
-  }, [productsByCategoryQuery, sizesByCategoryQuery, currentSizeName]);
+    return queryProducts!.filter((product) =>
+      sizesWithCurrentSizeName.some((size) => product.sizeId === size._id)
+    );
+  }, [isSuccess, queryProducts, querySizes, currentSizeName]);
 
   useEffect(() => {
-    if (!sizesByCategoryQuery.data) return;
+    if (!isSuccess) return;
 
-    const sizeData = sizesByCategoryQuery.data.find((sizeData) => sizeData.name === sizeParamValue);
+    const currentSize = querySizes!.find((sizeData) => sizeData.name === sizeParamValue);
 
-    if (sizeData) {
+    if (currentSize) {
       setCurrentSizeName(sizeParamValue);
     } else {
-      const sizeName = sizesByCategoryQuery.data[0].name;
+      const sizeName = querySizes![0].name;
       setCurrentSizeName(sizeName);
       setSearchParams(
         (prev) => {
-          prev.set('size', encode(sizeName));
+          prev.set(SIZE_PARAMETER_KEY, encode(sizeName));
           return prev;
         },
         { replace: true }
       );
     }
-  }, [sizeParamValue, sizesByCategoryQuery, setSearchParams]);
-
-  const isError =
-    !category ||
-    sizesByCategoryQuery.isError ||
-    productsByCategoryQuery.isError ||
-    detailsByCategoryQuery.isError ||
-    appearancesByCategoryQuery.isError;
-
-  const isLoading =
-    !currentSizeName ||
-    sizesByCategoryQuery.isFetching ||
-    sizesByCategoryQuery.isUninitialized ||
-    productsByCategoryQuery.isFetching ||
-    productsByCategoryQuery.isUninitialized ||
-    detailsByCategoryQuery.isFetching ||
-    detailsByCategoryQuery.isUninitialized ||
-    appearancesByCategoryQuery.isFetching ||
-    appearancesByCategoryQuery.isUninitialized;
+  }, [sizeParamValue, isSuccess, querySizes, setSearchParams]);
 
   return (
     <section className={classes}>
       <div className={WRAPPER}>
         <p className={SECTION_TABS_PRE_TITLE}>★★★★★ 500,000+ happy customers</p>
         <h1 className={SECTION_TABS_TITLE}>{`Australia's most awarded mattress brand`}</h1>
-        {isLoading ? (
-          <LoaderBlock loading />
-        ) : isError ? (
+        {isError ? (
           <LoaderBlock />
+        ) : isLoading || !currentSizeName || !sizeNames || !products ? (
+          <LoaderBlock loading />
         ) : (
           <>
             <ParamTabs
@@ -109,10 +96,9 @@ const SectionTabs: FC<TSectionTabsProps> = (props) => {
               paramName="size"
             />
             <ProductTab
-              sizes={sizesByCategoryQuery.data!}
               products={products}
-              details={detailsByCategoryQuery.data!}
-              appearances={appearancesByCategoryQuery.data!}
+              details={queryDetails!}
+              appearances={queryAppearances!}
             />
           </>
         )}
