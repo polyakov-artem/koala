@@ -10,7 +10,7 @@ export default [
     width: 92,
     length: 188,
     weight: 21,
-    mediaURL: ['/build/products/sizes/mattresses/koala-plus-mattress/single/1.webp'],
+    mediaURL: '/build/products/sizes/mattresses/koala-plus-mattress/single/1.webp',
   },
   {
     _id: '2',
@@ -21,7 +21,7 @@ export default [
     width: 183,
     length: 203,
     weight: 47.2,
-    mediaURL: ['/build/products/sizes/mattresses/koala-plus-mattress/king/1.webp'],
+    mediaURL: '/build/products/sizes/mattresses/koala-plus-mattress/king/1.webp',
   },
   {
     _id: '3',
@@ -32,7 +32,7 @@ export default [
     width: 203,
     length: 203,
     weight: 50,
-    mediaURL: ['/build/products/sizes/mattresses/koala-plus-mattress/super-king/1.webp'],
+    mediaURL: '/build/products/sizes/mattresses/koala-plus-mattress/super-king/1.webp',
   },
   {
     _id: '4',
@@ -43,7 +43,7 @@ export default [
     width: 138,
     length: 188,
     weight: 33.85,
-    mediaURL: ['/build/products/sizes/mattresses/koala-luxe-mattress/double/1.webp'],
+    mediaURL: '/build/products/sizes/mattresses/koala-luxe-mattress/double/1.webp',
   },
   {
     _id: '5',
@@ -54,7 +54,7 @@ export default [
     width: 183,
     length: 203,
     weight: 48.35,
-    mediaURL: ['/build/products/sizes/mattresses/koala-luxe-mattress/king/1.webp'],
+    mediaURL: '/build/products/sizes/mattresses/koala-luxe-mattress/king/1.webp',
   },
   {
     _id: '6',
@@ -65,7 +65,7 @@ export default [
     width: 92,
     length: 188,
     weight: 18.57,
-    mediaURL: ['/build/products/sizes/mattresses/koala-mattress/single/1.webp'],
+    mediaURL: '/build/products/sizes/mattresses/koala-mattress/single/1.webp',
   },
   {
     _id: '7',
@@ -76,7 +76,7 @@ export default [
     width: 183,
     length: 203,
     weight: 40.34,
-    mediaURL: ['/build/products/sizes/mattresses/koala-mattress/king/1.webp'],
+    mediaURL: '/build/products/sizes/mattresses/koala-mattress/king/1.webp',
   },
   {
     _id: '8',
@@ -87,6 +87,6 @@ export default [
     width: 203,
     length: 203,
     weight: 45,
-    mediaURL: ['/build/products/sizes/mattresses/koala-mattress/super-king/1.webp'],
+    mediaURL: '/build/products/sizes/mattresses/koala-mattress/super-king/1.webp',
   },
 ] satisfies Array<TSize>;

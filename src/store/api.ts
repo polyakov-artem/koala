@@ -5,6 +5,7 @@ import sizes from '../mock/data/sizes';
 import appearances from '../mock/data/appearances';
 import { delay } from '../../tests/msw/utils/delay';
 import { TAppearance, TProduct, TSize, TDetails } from '../types/types';
+import { getRandomElement } from '../utils/getRandom';
 
 export type TCustomError = { message: string; status: number };
 
@@ -49,6 +50,34 @@ export const api = createApi({
         const result = products.filter((product) => {
           return product.detailsId === detailsId;
         });
+
+        return { data: result };
+      },
+    }),
+
+    bestsellersByCategory: builder.query<TProduct[], string>({
+      queryFn: async (category: string) => {
+        await delay(100);
+
+        const productsByDetails = products
+          .filter((product) => {
+            return product.category === category;
+          })
+          .reduce(
+            (result, product) => {
+              if (!result[product.detailsId]) {
+                result[product.detailsId] = [];
+              }
+
+              result[product.detailsId].push(product);
+              return result;
+            },
+            {} as Record<string, TProduct[]>
+          );
+
+        const result = Object.values(productsByDetails).map((products) =>
+          getRandomElement(products)
+        );
 
         return { data: result };
       },
@@ -146,6 +175,7 @@ export const {
   useProductByIdQuery,
   useProductsByCategoryQuery,
   useProductsByDetailsQuery,
+  useBestsellersByCategoryQuery,
   useDetailsByIdQuery,
   useDetailsByCategoryQuery,
   useSizeByIdQuery,

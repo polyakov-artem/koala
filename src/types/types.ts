@@ -9,6 +9,7 @@ export type TProduct = {
 
 export type TAppearance = {
   _id: string;
+  sizeId: string;
   detailsId: string;
   category: string;
   name: string;
@@ -25,7 +26,7 @@ export type TSize = {
   width: number;
   length: number;
   weight: number;
-  mediaURL: string[];
+  mediaURL: string;
 };
 
 export type TDetails = {
@@ -38,6 +39,15 @@ export type TDetails = {
   advantages: TAdvantage[];
   reasons: TReason[];
   faq: TFaq;
+  rating: number;
+  reviews: number;
+  features: string[];
+  firmness: string[];
+  layers: string[];
+  awardsURL: string[];
+  appearanceURL: string;
+  sizeVariants: string[];
+  appearanceVariants: string[];
 };
 
 export type TReview = {
