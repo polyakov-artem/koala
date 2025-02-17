@@ -7,11 +7,11 @@ import {
   useProductsByCategoryQuery,
   useSizesByCategoryQuery,
 } from '../../../store/api';
-import './Mattresses.scss';
+import './ViewMattresses.scss';
 
-export const MATTRESSES = 'mattresses';
+export const VIEW_MATTRESSES = 'view-mattresses';
 
-const Mattresses: FC = () => {
+const ViewMattresses: FC = () => {
   const category = getFirstPathNamePart({ hasPublicPath: true }) || '';
   const sizesByCategoryQuery = useSizesByCategoryQuery(category);
   const productsByCategoryQuery = useProductsByCategoryQuery(category);
@@ -37,7 +37,7 @@ const Mattresses: FC = () => {
   const isSuccess = !isError && !isLoading;
 
   return (
-    <main className={MATTRESSES}>
+    <main className={VIEW_MATTRESSES}>
       <SectionTabs
         isSuccess={isSuccess}
         isError={isError}
@@ -51,4 +51,4 @@ const Mattresses: FC = () => {
   );
 };
 
-export default Mattresses;
+export default ViewMattresses;

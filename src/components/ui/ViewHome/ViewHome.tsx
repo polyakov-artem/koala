@@ -7,13 +7,13 @@ import SectionSubscribe from '../SectionSubscribe/SectionSubscribe';
 import SectionBrands from '../SectionBrands/SectionBrands';
 import SectionBestsellers from '../SectionBestsellers/SectionBestsellers';
 import SectionBuyers from '../SectionBuyers/SectionBuyers';
-import './Home.scss';
+import './ViewHome.scss';
 
-export const HOME = 'home';
+export const VIEW_HOME = 'view-home';
 
-const Home: FC = () => {
+const ViewHome: FC = () => {
   return (
-    <main className={HOME}>
+    <main className={VIEW_HOME}>
       <HomeHero />
       <Categories />
       <SectionBestsellers />
@@ -26,4 +26,4 @@ const Home: FC = () => {
   );
 };
 
-export default Home;
+export default ViewHome;

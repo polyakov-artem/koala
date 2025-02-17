@@ -1,7 +1,7 @@
 import App from './App';
-import Home from './components/ui/Home/Home';
-import Mattresses from './components/ui/Mattresses/Mattresses';
-import NotFound from './components/ui/NotFound/NotFound';
+import ViewHome from './components/ui/ViewHome/ViewHome';
+import ViewNotFound from './components/ui/ViewNotFound/ViewNotFound';
+import ViewMattresses from './components/ui/ViewMattresses/ViewMattresses';
 import { PUBLIC_PATH } from './constants/constants';
 import { RouteObject } from 'react-router';
 
@@ -20,23 +20,23 @@ const routes: RouteObject[] = [
     children: [
       {
         index: true,
-        element: <Home />,
+        element: <ViewHome />,
       },
       {
         path: MATTRESSES,
-        element: <Mattresses />,
+        element: <ViewMattresses />,
       },
       {
         path: WHY_COALA,
-        element: <Home />,
+        element: <ViewHome />,
       },
       {
         path: `*`,
-        element: <NotFound />,
+        element: <ViewNotFound />,
       },
       {
         path: NOT_FOUND,
-        element: <NotFound />,
+        element: <ViewNotFound />,
       },
     ],
   },
