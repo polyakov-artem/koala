@@ -5,39 +5,49 @@ import SelectorCard from '../SelectorCard/SelectorCard';
 import './SelectorsTab.scss';
 
 export type TSelectorsTabProps = ComponentProps<'div'> & {
-  sizes: TSize[];
-  products: TProduct[];
-  details: TDetails[];
-  appearances: TAppearance[];
+  sizesQueryData: TSize[];
+  productsQueryData: TProduct[];
+  detailsQueryData: TDetails[];
+  appearancesQueryData: TAppearance[];
+  bestsellersQueryData: TProduct[];
 };
 
 export const SELECTORS_TAB = 'selectors-tab';
 export const SELECTORS_TAB_GRID = `${SELECTORS_TAB}__grid`;
 
 const SelectorsTab: FC<TSelectorsTabProps> = (props) => {
-  const { className, products, details, sizes, appearances, ...restProps } = props;
+  const {
+    className,
+    bestsellersQueryData,
+    productsQueryData,
+    detailsQueryData,
+    sizesQueryData,
+    appearancesQueryData,
+    ...restProps
+  } = props;
   const classes = classNames(SELECTORS_TAB, className);
 
   const cards = useMemo(() => {
-    return details.map((productDetails) => {
-      const equalDetailsProducts = products.filter(
-        (product) => product.detailsId === productDetails._id
-      );
-      const initialProduct = equalDetailsProducts[0];
-
+    return bestsellersQueryData.map((bestseller) => {
       return (
         <SelectorCard
-          initialProduct={initialProduct}
-          key={productDetails._id}
-          products={equalDetailsProducts}
-          details={productDetails}
-          sizes={sizes}
-          appearances={appearances}
+          initialProduct={bestseller}
+          key={bestseller._id}
+          sizesQueryData={sizesQueryData}
+          appearancesQueryData={appearancesQueryData}
+          detailsQueryData={detailsQueryData}
+          productsQueryData={productsQueryData}
           withHoverEffect
         />
       );
     });
-  }, [products, details, appearances, sizes]);
+  }, [
+    productsQueryData,
+    detailsQueryData,
+    appearancesQueryData,
+    sizesQueryData,
+    bestsellersQueryData,
+  ]);
 
   return (
     <div className={classes} {...restProps}>

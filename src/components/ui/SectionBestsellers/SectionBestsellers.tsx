@@ -1,7 +1,8 @@
-import { ComponentProps, FC, useEffect, useMemo, useState } from 'react';
+import { ComponentProps, FC, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import {
   useAppearancesByCategoryQuery,
+  useBestsellersByCategoryQuery,
   useDetailsByCategoryQuery,
   useProductsByCategoryQuery,
   useSizesByCategoryQuery,
@@ -12,9 +13,9 @@ import { useSearchParams } from 'react-router';
 import { decode, encode } from 'ent';
 import { productCategories } from '../../../routes';
 import ParamTabs from '../ParamTabs/ParamTabs';
-import './SectionBestsellers.scss';
 import LoaderBlock from '../../shared/LoaderBlock/LoaderBlock';
 import SelectorsTab from '../SelectorsTab/SelectorsTab';
+import './SectionBestsellers.scss';
 
 export type TSectionBestsellersProps = ComponentProps<'section'>;
 
@@ -32,15 +33,7 @@ const SectionBestsellers: FC<TSectionBestsellersProps> = (props) => {
   const productsByCategoryQuery = useProductsByCategoryQuery(category || skipToken);
   const detailsByCategoryQuery = useDetailsByCategoryQuery(category || skipToken);
   const appearancesByCategoryQuery = useAppearancesByCategoryQuery(category || skipToken);
-
-  const products = useMemo(() => {
-    const products = productsByCategoryQuery.data;
-
-    if (!products || !category) {
-      return [];
-    }
-    return products.filter((product) => product.category === category);
-  }, [productsByCategoryQuery, category]);
+  const bestsellersByCategoryQuery = useBestsellersByCategoryQuery(category || skipToken);
 
   useEffect(() => {
     const isCorrectCategoryParam = productCategories.includes(categoryParam);
@@ -69,22 +62,25 @@ const SectionBestsellers: FC<TSectionBestsellersProps> = (props) => {
     detailsByCategoryQuery.isFetching ||
     detailsByCategoryQuery.isUninitialized ||
     appearancesByCategoryQuery.isFetching ||
-    appearancesByCategoryQuery.isUninitialized;
+    appearancesByCategoryQuery.isUninitialized ||
+    bestsellersByCategoryQuery.isFetching ||
+    bestsellersByCategoryQuery.isUninitialized;
 
   const isError =
     sizesByCategoryQuery.isError ||
     productsByCategoryQuery.isError ||
     detailsByCategoryQuery.isError ||
-    appearancesByCategoryQuery.isError;
+    appearancesByCategoryQuery.isError ||
+    bestsellersByCategoryQuery.isError;
 
   return (
     <section className={classes}>
       <div className={WRAPPER}>
         <h1 className={SECTION_BESTSELLERS_TITLE}>Bestsellers</h1>
-        {isLoading ? (
-          <LoaderBlock loading />
-        ) : isError ? (
+        {isError ? (
           <LoaderBlock />
+        ) : isLoading ? (
+          <LoaderBlock loading />
         ) : (
           <>
             <ParamTabs
@@ -94,10 +90,11 @@ const SectionBestsellers: FC<TSectionBestsellersProps> = (props) => {
               paramName="category"
             />
             <SelectorsTab
-              sizes={sizesByCategoryQuery.data!}
-              products={products}
-              details={detailsByCategoryQuery.data!}
-              appearances={appearancesByCategoryQuery.data!}
+              sizesQueryData={sizesByCategoryQuery.data!}
+              productsQueryData={productsByCategoryQuery.data!}
+              detailsQueryData={detailsByCategoryQuery.data!}
+              appearancesQueryData={appearancesByCategoryQuery.data!}
+              bestsellersQueryData={bestsellersByCategoryQuery.data!}
             />
           </>
         )}

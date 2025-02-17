@@ -6,12 +6,12 @@ import { getFullPath } from '../../../utils/getFullPath';
 import './SelectorCard.scss';
 
 export type TSelectorCardProps = ComponentProps<'article'> & {
-  appearances: TAppearance[];
-  details: TDetails;
-  sizes: TSize[];
-  products: TProduct[];
-  withHoverEffect?: boolean;
   initialProduct: TProduct;
+  sizesQueryData: TSize[];
+  productsQueryData: TProduct[];
+  appearancesQueryData: TAppearance[];
+  detailsQueryData: TDetails[];
+  withHoverEffect: boolean;
 };
 
 export const SELECTOR_CARD = 'selector-card';
@@ -30,19 +30,29 @@ const formatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 
 const SelectorCard: FC<TSelectorCardProps> = (props) => {
   const {
     className,
-    appearances,
-    details,
-    sizes,
-    products,
     initialProduct,
+    sizesQueryData,
+    productsQueryData,
+    appearancesQueryData,
+    detailsQueryData,
     withHoverEffect,
     ...restProps
   } = props;
   const [product] = useState(initialProduct);
-  const appearance = appearances.find((appearance) => appearance._id === product.appearanceId);
-  const size = sizes.find((size) => size._id === product.sizeId);
-  const sizesCount = sizes.filter((size) => size.detailsId === product.detailsId).length;
-  const fromPrice = products.map((product) => product.price).sort((a, b) => a - b)[0];
+  const appearance = appearancesQueryData.find(
+    (appearance) => appearance._id === product.appearanceId
+  );
+  const details = detailsQueryData.find((details) => product.detailsId === details._id);
+  const size = sizesQueryData.find((size) => product.sizeId === size._id);
+
+  const sizesCount = (details?.sizeVariants.length || 1) - 1;
+
+  const equalDetailsProducts = productsQueryData.filter(
+    (productData) => productData.detailsId === product.detailsId
+  );
+
+  const fromPrice = equalDetailsProducts.map((product) => product.price).sort((a, b) => a - b)[0];
+  const rating = details?.rating || 0;
 
   const classes = getClasses(SELECTOR_CARD, className, { withHoverEffect });
   const cardInner = (
@@ -50,7 +60,9 @@ const SelectorCard: FC<TSelectorCardProps> = (props) => {
       <div className={SELECTOR_CARD_IMG_WRAP}>
         <img className={SELECTOR_CARD_IMG} src={appearance?.mediaURL?.[0]} alt={details?.name} />
       </div>
-      <p className={SELECTOR_CARD_STATISTICS}>★★★★★ 5 (650)</p>
+      <p className={SELECTOR_CARD_STATISTICS}>
+        {'★'.repeat(Math.round(rating))} {rating} ({details?.reviews})
+      </p>
       <h4 className={SELECTOR_CARD_TITLE}>{details?.name}</h4>
       <p className={SELECTOR_CARD_SIZES}>
         <span className={SELECTOR_CARD_SIZE_NAME}>{size?.name}</span>
