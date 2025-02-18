@@ -1,0 +1,24 @@
+.product-info {
+  &__price {
+    font-weight: bold;
+  }
+
+  &__current-size {
+    font-weight: bold;
+    text-transform: capitalize;
+  }
+
+  &__sizes {
+    margin-bottom: var(--g-md-gap);
+  }
+
+  &__awards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--g-md-gap);
+    margin-bottom: var(--g-md-gap);
+  }
+  &__award-img {
+    max-width: 100px;
+  }
+}

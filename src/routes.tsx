@@ -4,6 +4,7 @@ import ViewNotFound from './components/ui/ViewNotFound/ViewNotFound';
 import ViewMattresses from './components/ui/ViewMattresses/ViewMattresses';
 import { PUBLIC_PATH } from './constants/constants';
 import { RouteObject } from 'react-router';
+import ViewProduct from './components/ui/ViewProduct/ViewProduct';
 
 export const MATTRESSES = 'mattresses';
 export const SOFA_BEDS = 'sofa-beds';
@@ -25,6 +26,10 @@ const routes: RouteObject[] = [
       {
         path: MATTRESSES,
         element: <ViewMattresses />,
+      },
+      {
+        path: `${MATTRESSES}/:id`,
+        element: <ViewProduct />,
       },
       {
         path: WHY_COALA,
