@@ -78,7 +78,7 @@
   --border-color: var(--gray-1);
   --hover-border-color: var(--border-color);
   --active-border-color: var(--border-color);
-  --disabled-border-color: var(--border-color);
+  --disabled-border-color: var(--disabled-bg-color);
 
   --bg-color: var(--white-1);
   --hover-bg-color: var(--bg-color);
@@ -103,7 +103,7 @@
   --border-color: var(--bg-color);
   --hover-border-color: var(--border-color);
   --active-border-color: var(--border-color);
-  --disabled-border-color: var(--border-color);
+  --disabled-border-color: var(--disabled-bg-color);
   --selected-border-color: var(--border-color);
 
   --focus-box-shadow: var(--gray-1-50);
@@ -125,10 +125,10 @@
   --border-color: var(--bg-color);
   --hover-border-color: var(--border-color);
   --active-border-color: var(--border-color);
-  --disabled-border-color: var(--border-color);
+  --disabled-border-color: var(--disabled-bg-color);
   --selected-border-color: var(--border-color);
 
-  --focus-box-shadow: var(--gray-1-50);
+  --focus-box-shadow: var(--green-1-50);
   --selected-focus-box-shadow: var(--focus-box-shadow);
 }
 
@@ -138,6 +138,18 @@
   border-width: 1px;
   border-style: solid;
   border-radius: 1.1rem;
+
+  & .btn__inner {
+    gap: 1rem;
+  }
+}
+
+.btn_view_secondary {
+  font-size: 1.2rem;
+  padding: 1rem 1.5rem;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 1.6rem;
 
   & .btn__inner {
     gap: 1rem;

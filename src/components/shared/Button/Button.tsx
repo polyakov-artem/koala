@@ -11,7 +11,7 @@ export const BTN_FULL_WIDTH = `${BTN}_full-width`;
 
 export type TButtonCustomProps = {
   theme?: 'primary' | 'secondary' | 'tertiary';
-  view?: 'primary' | 'round';
+  view?: 'primary' | 'secondary' | 'round';
   fullWidth?: boolean;
   capitalized?: boolean;
   uppercase?: boolean;
