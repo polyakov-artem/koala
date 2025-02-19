@@ -14,6 +14,7 @@ import LoaderBlock from '../../shared/LoaderBlock/LoaderBlock';
 import { skipToken } from '@reduxjs/toolkit/query';
 import { isNotFoundError } from '../../../utils/isNotFoundError';
 import SectionReasons from '../SectionReasons/SectionReasons';
+import Advantages from '../Advantages/Advantages';
 import './ViewProduct.scss';
 
 export const VIEW_PRODUCT = 'view-product';
@@ -77,6 +78,7 @@ const ViewProduct: FC = () => {
             sizesData={sizesByDetailsQuery.data!}
           />
           <SectionReasons details={detailsByIdQueryQuery.data!} />
+          <Advantages details={detailsByIdQueryQuery.data!} />
         </>
       )}
     </main>
