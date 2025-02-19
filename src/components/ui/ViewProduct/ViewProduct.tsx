@@ -13,6 +13,7 @@ import { getFullPath } from '../../../utils/getFullPath';
 import LoaderBlock from '../../shared/LoaderBlock/LoaderBlock';
 import { skipToken } from '@reduxjs/toolkit/query';
 import { isNotFoundError } from '../../../utils/isNotFoundError';
+import SectionReasons from '../SectionReasons/SectionReasons';
 import './ViewProduct.scss';
 
 export const VIEW_PRODUCT = 'view-product';
@@ -66,14 +67,17 @@ const ViewProduct: FC = () => {
       ) : isError ? (
         <LoaderBlock className={VIEW_PRODUCT_LOADER_BLOCK} />
       ) : (
-        <ProductDetails
-          className={VIEW_PRODUCT_DETAILS}
-          product={productByIdQuery.data!}
-          details={detailsByIdQueryQuery.data!}
-          productsData={productsByDetailsQuery.data!}
-          appearancesData={appearancesByDetailsQuery.data!}
-          sizesData={sizesByDetailsQuery.data!}
-        />
+        <>
+          <ProductDetails
+            className={VIEW_PRODUCT_DETAILS}
+            product={productByIdQuery.data!}
+            details={detailsByIdQueryQuery.data!}
+            productsData={productsByDetailsQuery.data!}
+            appearancesData={appearancesByDetailsQuery.data!}
+            sizesData={sizesByDetailsQuery.data!}
+          />
+          <SectionReasons details={detailsByIdQueryQuery.data!} />
+        </>
       )}
     </main>
   );

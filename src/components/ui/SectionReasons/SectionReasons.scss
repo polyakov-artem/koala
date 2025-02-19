@@ -1,0 +1,22 @@
+.section-reasons {
+  &__header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    margin-bottom: var(--g-md-gap);
+  }
+
+  &__card {
+    cursor: pointer;
+  }
+
+  &__title {
+    margin-bottom: 0;
+    max-width: 800px;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: var(--g-md-gap);
+  }
+}
