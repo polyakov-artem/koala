@@ -10,7 +10,7 @@ export const BTN_THEME_PRIMARY = `${BTN}_theme_primary`;
 export const BTN_FULL_WIDTH = `${BTN}_full-width`;
 
 export type TButtonCustomProps = {
-  theme?: 'primary' | 'secondary' | 'tertiary';
+  theme?: 'primary' | 'secondary' | 'tertiary' | 'transparent';
   view?: 'primary' | 'secondary' | 'round';
   fullWidth?: boolean;
   capitalized?: boolean;
