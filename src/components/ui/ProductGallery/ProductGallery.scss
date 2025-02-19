@@ -3,6 +3,26 @@
   flex-direction: column;
   gap: var(--g-md-gap);
 
+  &__swiper {
+    position: relative;
+  }
+
+  &__btn-next,
+  &__btn-previous {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+  }
+
+  &__btn-next {
+    right: 10px;
+  }
+
+  &__btn-previous {
+    left: 10px;
+  }
+
   &__grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -10,14 +30,29 @@
     gap: var(--g-xs-gap);
   }
 
-  &__item {
+  &__media-item {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
     border-radius: 10px;
+  }
+
+  &__media {
     height: 100%;
     width: 100%;
     object-fit: cover;
   }
 
   &__load-btn {
-    align-self: center;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 767.98px) {
+    &__grid {
+      display: none;
+    }
+
+    &__load-btn {
+      display: none;
+    }
   }
 }

@@ -1,13 +1,13 @@
 .product-details {
   &__grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, calc(50% - var(--g-md-gap)));
     gap: var(--g-md-gap);
   }
 
   @media (max-width: 767.98px) {
     &__grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: 100%;
     }
   }
 }
