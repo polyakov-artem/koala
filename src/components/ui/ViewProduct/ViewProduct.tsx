@@ -15,6 +15,9 @@ import { skipToken } from '@reduxjs/toolkit/query';
 import { isNotFoundError } from '../../../utils/isNotFoundError';
 import SectionReasons from '../SectionReasons/SectionReasons';
 import Advantages from '../Advantages/Advantages';
+import SectionSubscribe from '../SectionSubscribe/SectionSubscribe';
+import SectionWhy from '../SectionWhy/SectionWhy';
+import SectionContacts from '../SectionContacts/SectionContacts';
 import './ViewProduct.scss';
 
 export const VIEW_PRODUCT = 'view-product';
@@ -79,6 +82,9 @@ const ViewProduct: FC = () => {
           />
           <SectionReasons details={detailsByIdQueryQuery.data!} />
           <Advantages details={detailsByIdQueryQuery.data!} />
+          <SectionWhy />
+          <SectionContacts />
+          <SectionSubscribe />
         </>
       )}
     </main>

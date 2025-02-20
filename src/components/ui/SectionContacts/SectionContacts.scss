@@ -1,0 +1,8 @@
+.section-contacts {
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, min(350px, 100%));
+    gap: var(--g-md-gap);
+    justify-content: center;
+  }
+}

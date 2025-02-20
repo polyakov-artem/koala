@@ -1,0 +1,22 @@
+.card-contact {
+  text-align: center;
+  background-color: var(--white-2);
+  padding: var(--g-md-gap);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+
+  &__icon-wrap {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+  }
+
+  &__title {
+    margin-bottom: 1rem;
+  }
+
+  &__link {
+    margin-top: auto;
+    color: var(--green-1);
+  }
+}
