@@ -6,6 +6,7 @@
 
   &__nav {
     display: flex;
+    min-height: var(--g-header-min-height);
     align-items: center;
     gap: var(--g-sm-gap);
   }

@@ -7,8 +7,11 @@ import { ICON_MD, WRAPPER } from '../../../constants/classNames';
 import classNames from 'classnames';
 import Burger from '../../shared/Burger/Burger';
 import { Dropdown, Collapse } from 'react-bootstrap';
-import './Header.scss';
 import LogoLink from '../LogoLink/LogoLink';
+import { getFullPath } from '../../../utils/getFullPath';
+import { AUTHENTICATION } from '../../../routes';
+import { LOGIN, PARAM_NAME, REGISTER } from '../ViewAuth/ViewAuth';
+import './Header.scss';
 
 export const HEADER = 'header';
 export const HEADER_NAV = `${HEADER}__nav`;
@@ -65,11 +68,19 @@ const Header: FC = () => {
               <FaRegUserCircle className={classNames(ICON_MD)} />
             </Dropdown.Toggle>
             <Dropdown.Menu align="end">
-              <Dropdown.Item as={Link} to={`${PUBLIC_PATH}profile`} className={HEADER_PROFILE_ITEM}>
-                Profile
+              <Dropdown.Item
+                as={Link}
+                to={getFullPath(`${AUTHENTICATION}`, `?${PARAM_NAME}=${LOGIN}`)}
+                relative="path"
+                className={HEADER_PROFILE_ITEM}>
+                Log in
               </Dropdown.Item>
-              <Dropdown.Item as={Link} to={`${PUBLIC_PATH}logout`} className={HEADER_PROFILE_ITEM}>
-                Log out
+              <Dropdown.Item
+                as={Link}
+                to={getFullPath(`${AUTHENTICATION}`, `?${PARAM_NAME}=${REGISTER}`)}
+                relative="path"
+                className={HEADER_PROFILE_ITEM}>
+                Register
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
