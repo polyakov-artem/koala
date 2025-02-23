@@ -1,6 +1,7 @@
 import { ComponentProps, FC } from 'react';
 import SvgIcon from '../../shared/SvgIcon/SvgIcon';
 import classNames from 'classnames';
+import { PUBLIC_PATH } from '../../../constants/constants';
 import './LogoLink.scss';
 
 export type TLogoLinkProps = Omit<ComponentProps<'a'>, 'href'>;
@@ -13,7 +14,7 @@ const LogoLink: FC<TLogoLinkProps> = (props) => {
   const classes = classNames(LOGO_LINK, className);
 
   return (
-    <a {...restProps} className={classes} href="/">
+    <a {...restProps} className={classes} href={`${PUBLIC_PATH}`}>
       <SvgIcon className={LOGO_LINK_ICON} iconId="logo" />
     </a>
   );

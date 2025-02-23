@@ -5,6 +5,7 @@ import { FaFacebookF, FaInstagram } from 'react-icons/fa';
 import footerImgSrc from '../../../assets/images/footer/img.webp';
 import classNames from 'classnames';
 import { linkBlocksData, mainText } from './data';
+import { PUBLIC_PATH } from '../../../constants/constants';
 import './Footer.scss';
 
 export const FOOTER = 'footer';
@@ -76,22 +77,22 @@ const Footer: FC = () => {
         </div>
         <div className={FOOTER_PANEL}>
           <span>© 2025 Koala</span>
-          <a className={FOOTER_LINK} href="/">
+          <a className={FOOTER_LINK} href={`${PUBLIC_PATH}`}>
             Privacy
           </a>
-          <a className={FOOTER_LINK} href="/">
+          <a className={FOOTER_LINK} href={`${PUBLIC_PATH}`}>
             Policy
           </a>
-          <a className={FOOTER_LINK} href="/">
+          <a className={FOOTER_LINK} href={`${PUBLIC_PATH}`}>
             Website
           </a>
-          <a className={FOOTER_LINK} href="/">
+          <a className={FOOTER_LINK} href={`${PUBLIC_PATH}`}>
             Terms
           </a>
-          <a className={FOOTER_LINK} href="/">
+          <a className={FOOTER_LINK} href={`${PUBLIC_PATH}`}>
             Terms of Service
           </a>
-          <a className={FOOTER_LINK} href="/">
+          <a className={FOOTER_LINK} href={`${PUBLIC_PATH}`}>
             Promotion Terms
           </a>
         </div>

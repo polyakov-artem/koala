@@ -1,5 +1,5 @@
 import { ComponentProps, FC } from 'react';
-import Loader from '../../shared/Loader/loader';
+import Loader from '../../shared/Loader/Loader';
 import { LOADING_FAIL_PLACEHOLDER, LOADING_PLACEHOLDER } from '../../../constants/constants';
 import { getClasses } from '../../../utils/getClasses';
 import './LoaderBlock.scss';

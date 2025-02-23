@@ -1,6 +1,6 @@
 import { getClasses } from '../../../utils/getClasses';
 import { ComponentProps, FC } from 'react';
-import './loader.scss';
+import './Loader.scss';
 
 export type TLoaderProps = ComponentProps<'span'>;
 
