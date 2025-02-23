@@ -4,6 +4,7 @@ import { LOGIN, PARAM_NAME, REGISTER } from '../ViewAuth/ViewAuth';
 import SvgIcon from '../../shared/SvgIcon/SvgIcon';
 import { Link } from 'react-router';
 import FormLogin from '../FormLogin/FormLogin';
+import FormSignup from '../FormSignup/FormSignup';
 import './AuthWindow.scss';
 
 export type TAuthWindow = ComponentProps<'div'> & {
@@ -34,6 +35,7 @@ const AuthWindow: FC<TAuthWindow> = (props) => {
         </>
       ) : (
         <>
+          <FormSignup />
           <p className={AUTH_WINDOW_QUESTION}>
             {`Already have an account? `}
             <Link relative="path" className={AUTH_WINDOW_LINK} to={`?${PARAM_NAME}=${LOGIN}`}>
