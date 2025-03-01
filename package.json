@@ -12,7 +12,10 @@
     "lint:fix": "eslint . --fix",
     "format:fix": "prettier . --write",
     "test": "vitest",
-    "test:ui": "vitest --ui"
+    "test:ui": "vitest --ui",
+    "create404": "shx cp dist/index.html dist/404.html",
+    "deployOnGithub": "gh-pages -d dist",
+    "deploy": "npm run build && npm run create404 && npm run deployOnGithub"
   },
   "lint-staged": {
     "*.{css,scss,sass}": [
@@ -32,6 +35,7 @@
     "ent": "^2.2.2",
     "eslint-plugin-react": "^7.37.4",
     "formik": "^2.4.6",
+    "gh-pages": "^6.3.0",
     "react": "^19.0.0",
     "react-bootstrap": "^2.10.8",
     "react-dom": "^19.0.0",
@@ -64,6 +68,7 @@
     "msw": "^2.7.0",
     "prettier": "3.4.2",
     "sass-embedded": "^1.83.4",
+    "shx": "^0.3.4",
     "typescript": "~5.6.2",
     "typescript-eslint": "^8.18.2",
     "vite": "^6.0.5",
